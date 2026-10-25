@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Question Answers{% endblock %}
+
+{% block content %}
+
+<section class="admin-head">
+    <div>
+        <p class="eyebrow">PRIVATE DASHBOARD</p>
+        <h1>Question <span class="script">answers</span></h1>
+    </div>
+
+    <a class="btn secondary" href="{{ url_for('dashboard') }}">
+        ← Dashboard
+    </a>
+</section>
+
+{% for r in rows %}
+
+<article class="inbox-card">
+
+    <div class="inbox-top">
+        <strong>Question {{ r.qno }}</strong>
+        <time>{{ r.created }}</time>
+    </div>
+
+    <p>
+        <strong>{{ r.question }}</strong>
+    </p>
+
+    <p class="message-text">{{ r.answer }}</p>
+
+    <p class="tiny muted">
+        Session: {{ r.visitor }}
+    </p>
+
+</article>
+
+{% else %}
+
+<section class="section-card empty-state">
+    <h2>No answers yet</h2>
+    <p class="muted">Submitted answers will appear here.</p>
+</section>
+
+{% endfor %}
+
+{% endblock %}

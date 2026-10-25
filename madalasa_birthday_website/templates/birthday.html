@@ -1,0 +1,211 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Happy Birthday, Madalasa! 💚{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="hero-copy">
+
+        <span class="pill">NOVEMBER 23 · YOUR SPECIAL DAY</span>
+
+        <h1>
+            A whole little universe<br>
+            just for <span class="script">Madalasa</span>
+            <span class="green">✿</span>
+        </h1>
+
+        <p class="lead">
+            A page full of memories, tiny questions, and a birthday wish
+            from Niranjan.
+        </p>
+
+        <div class="hero-actions">
+            <a class="btn primary" href="#question">
+                Start the surprise <span>↓</span>
+            </a>
+
+            <a class="btn secondary" href="{{ url_for('gallery') }}">
+                Open our memories ✧
+            </a>
+        </div>
+
+        <div class="countdown">
+            <span class="count-icon">♡</span>
+            <div>
+                <strong id="countdown-title">November 23 is special</strong>
+                <small id="countdown-text">Counting down to your day</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hero-art">
+        <div class="sun"></div>
+
+        <div class="art-card">
+            <span class="art-top">A DAY AS LOVELY AS YOU</span>
+            <div class="big-flower">🌼</div>
+            <p>
+                make a wish<br>
+                <strong>and keep shining</strong>
+            </p>
+            <span class="art-heart">♥</span>
+        </div>
+
+        <span class="floaty f1">✦</span>
+        <span class="floaty f2">♡</span>
+        <span class="floaty f3">✿</span>
+    </div>
+</section>
+
+<section id="question" class="section-card question-card">
+
+    <p class="eyebrow">OKAY, ONE IMPORTANT QUESTION</p>
+    <h2>Do you like me? <span>🙈</span></h2>
+    <p class="muted">Be honest… I promise this page can handle it.</p>
+
+    <div class="choice-row">
+        <button id="yesBtn" class="btn primary" type="button">
+            Yes, I do 💚
+        </button>
+
+        <button id="noBtn" class="btn pink" type="button">
+            No 🙃
+        </button>
+    </div>
+
+    <p id="answerStatus" class="status" aria-live="polite"></p>
+
+    <p class="tiny muted">
+        The answer you choose is saved so I can see it later.
+    </p>
+
+</section>
+
+<section class="section-card">
+
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">A FEW LITTLE QUESTIONS</p>
+            <h2>Tell me what’s on your mind</h2>
+        </div>
+
+        <span class="heading-flower">✿</span>
+    </div>
+
+    <form id="answersForm">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        {% for q in questions %}
+
+        <label class="question-label" for="q{{ loop.index }}">
+            <span class="q-number">0{{ loop.index }}</span>
+            {{ q }}
+        </label>
+
+        <textarea
+            id="q{{ loop.index }}"
+            name="q{{ loop.index }}"
+            rows="3"
+            placeholder="Write as much or as little as you want..."
+        ></textarea>
+
+        {% endfor %}
+
+        <button class="btn primary" type="submit">
+            Save my answers <span>↗</span>
+        </button>
+
+        <p id="answersStatus" class="status" aria-live="polite"></p>
+
+    </form>
+
+</section>
+
+<section class="feature-grid">
+
+    <a class="feature-card" href="{{ url_for('gallery') }}">
+        <span class="feature-icon">📸</span>
+        <h3>Little memories</h3>
+        <p>Photos that deserve a place in this tiny gallery.</p>
+        <span class="feature-link">Explore photos →</span>
+    </a>
+
+    <a class="feature-card peach" href="{{ url_for('letter') }}">
+        <span class="feature-icon">💌</span>
+        <h3>A letter for you</h3>
+        <p>A birthday note, written with care.</p>
+        <span class="feature-link">Read the letter →</span>
+    </a>
+
+</section>
+
+<section class="section-card feedback-card">
+
+    <p class="eyebrow">ONE LAST THING</p>
+    <h2>Leave a little note 💌</h2>
+    <p class="muted">
+        Share your thoughts, a rating, or a favourite memory.
+    </p>
+
+    <form id="feedbackForm">
+
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+        <div class="form-grid">
+
+            <div>
+                <label for="name">Your name (optional)</label>
+                <input id="name" name="name" placeholder="Your name">
+            </div>
+
+            <div>
+                <label for="rating">How did you like this page?</label>
+
+                <select id="rating" name="rating">
+                    <option value="">Choose a rating</option>
+                    <option value="5">★★★★★ Loved it</option>
+                    <option value="4">★★★★ Really liked it</option>
+                    <option value="3">★★★ It was nice</option>
+                    <option value="2">★★ Could be better</option>
+                    <option value="1">★ Not for me</option>
+                </select>
+            </div>
+
+        </div>
+
+        <label for="memory">Favourite memory (optional)</label>
+
+        <textarea
+            id="memory"
+            name="memory"
+            rows="2"
+            placeholder="A little memory you want to keep..."
+        ></textarea>
+
+        <label for="message">
+            Your message <span class="green">*</span>
+        </label>
+
+        <textarea
+            id="message"
+            name="message"
+            rows="4"
+            required
+            placeholder="Anything you want to say..."
+        ></textarea>
+
+        <button class="btn primary" type="submit">
+            Send my note 💚
+        </button>
+
+        <p id="feedbackStatus" class="status" aria-live="polite"></p>
+
+    </form>
+
+</section>
+
+{% endblock %}

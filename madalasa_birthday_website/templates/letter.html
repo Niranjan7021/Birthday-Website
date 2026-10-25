@@ -1,0 +1,75 @@
+
+{% extends 'base.html' %}
+
+{% block title %}A Letter for Madalasa 💌{% endblock %}
+
+{% block content %}
+
+<section class="page-intro">
+    <span class="pill">OPEN WHEN YOU NEED A SMILE</span>
+
+    <h1>
+        A little letter,
+        <span class="script">for you</span> 💌
+    </h1>
+
+    <p class="lead">From Niranjan, with care.</p>
+</section>
+
+<article class="letter-paper">
+
+    <div class="letter-stamp">✿</div>
+
+    <p class="letter-hi">Dear Madalasa,</p>
+
+    <p>Happy Birthday! 💚</p>
+
+    <p>
+        I wanted to make you something a little different—a small place
+        filled with photos, questions, and a few words that I hope make
+        you smile.
+    </p>
+
+    <p>
+        I hope this new year of your life brings you peaceful days,
+        good people, new opportunities, and the courage to follow the
+        dreams that matter to you. I hope you keep finding reasons to
+        laugh, moments worth remembering, and little things that make
+        an ordinary day feel special.
+    </p>
+    <p>
+        
+    </p>
+    <p>
+        Thank you for being you. Take care of yourself, be proud of
+        how far you have come, and never forget that your happiness matters.
+    </p>
+
+    <p>
+        Have a beautiful birthday and a lovely year ahead. 🌷
+    </p>
+
+    <p class="letter-sign">
+        With warm wishes,<br>
+        <strong>Niranjan</strong>
+    </p>
+
+    <div class="letter-bottom">
+        made with care · november 23
+    </div>
+
+</article>
+
+<div class="center-actions">
+
+    <a class="btn primary" href="{{ url_for('gallery') }}">
+        Back to the memories →
+    </a>
+
+    <a class="btn secondary" href="{{ url_for('birthday') }}">
+        Birthday home
+    </a>
+
+</div>
+
+{% endblock %}
